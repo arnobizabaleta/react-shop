@@ -14,9 +14,21 @@ const useInitialState = () => {
 		});
 	};
 
+	const removeFromCart = (indexValue) => {
+		setState({
+		  ...state,
+		  cart: state.cart.filter((product,index) => index !== indexValue),
+		})
+		/* Ese condicional lo que dice es: “SALVA TODOS” los elementos (<OrderItem />) 
+		del vector state.cart que NO tengan ese indexValue que llega. 
+		El index que llega por supuesto es al que le hacemos click. 
+		Por lo tanto, lo saca del vector y el nuevo vector state.cart es sin ese elemento 
+		al que hicimos click en la X. */
+	  }
 	return {
 		state,
-		addToCart
+		addToCart,
+		removeFromCart
 	}
 }
 
